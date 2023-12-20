@@ -1,0 +1,148 @@
+Tog'aymurodov Shohruh.  FAM1.  ID:230175
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+
+using namespace std;
+
+const int SIZE = 4;
+double sumColumn(const double m[][SIZE], int rowSize, int columnIndex)
+{
+    double sum = 0;
+    for (int i = 0; i < rowSize; i++)
+    {
+        sum += m[i][columnIndex];
+    }
+    return sum;
+}
+
+void Problem1()
+{
+    cout << "Problem 1" << endl;
+    const int rows = 5;
+    double m[rows][SIZE] = {5, 3, 1, 6,
+                            -5, 2, 1, 5, 6, 6, 1, 6, -3, 11, 2, 55, 0, 4, 0, 4};
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << "sum of column " << i << '=' << sumColumn(m, rows, i) << endl;}
+}
+
+double sumMajorDiagonal(const double m[SIZE][SIZE])
+{
+    double sum = 0;
+    for (int i = 0; i < SIZE; i++)
+    {
+        sum += m[i][i];
+    }
+    return sum;
+}
+
+void Problem2()
+{
+    cout << "Problem 2" << endl;
+    double m[SIZE][SIZE] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+    cout << sumMajorDiagonal(m) << endl;
+}
+
+void multiplyMatrix(const double a[SIZE][SIZE], const double b[SIZE][SIZE], double c[SIZE][SIZE])
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int j = 0; j < SIZE; j++)
+        {c[i][j] = 0;
+            for (int n = 0; n < SIZE; n++)
+            {
+                c[i][j] += a[i][n] * b[n][j];
+            }
+         }
+     }
+  }   
+  void Problem4()
+{
+    cout << "Problem 4" << endl;
+    string s = "Is it true?";
+    char key = '#';
+    search(s, key);
+}
+
+int count(const string &s, char a)
+{
+    int c = 0;
+    for (int i = 0; i < s.length(); i++)
+    {
+        if (s[i] == a)
+        {
+            c++;
+            }
+    }
+    return c;
+}
+void Problem6()
+{
+    cout << "Problem 6" << endl;
+    string s = "Hello World! How are you?";
+    int counts[25];
+    for (int i = 0; i < 25; i++)counts[i] = 0;
+    count(s, counts);
+    for (int i = 0; i < 25; i++)
+        if (counts[i])
+            cout << (char)(i + 'a') << ": " << counts[i] << endl;
+}
+void Problem9()
+{
+    cout << "Problem 9" << endl;
+    string s;
+    cin >> s;
+    vector<int> arr;
+    for (int i = 0; i < s.length(); i++)
+        if (find(arr.begin(), arr.end(), s[i]) == arr.end())
+            arr.push_back(s[i]);
+    cout << arr.size() << endl;
+}
+void Problem19()
+{
+    cout << "Problem 19" << endl;
+    int x = 0;
+    int n;
+    cin >> n;
+    string operation;
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> operation;
+        if (operation == "++x" || operation == "x++")
+            ++x;
+        else if (operation == "--x" || operation == "x--")
+            --x;
+    }
+    cout << x << endl;
+}
+
+int romanToInt(const std::string &s)
+{
+    unordered_map<char, int> romanMap = {
+        {'I', 1},
+        {'V', 5},
+        {'X', 10},
+        {'L', 50},{'C', 100},
+        {'D', 500},
+        {'M', 1000}};
+
+    int intValue = 0;
+    for (size_t i = 0; i < s.length(); i++)
+        if (i + 1 < s.length() && romanMap[s[i]] < romanMap[s[i + 1]])
+            intValue -= romanMap[s[i]];
+        else
+            intValue += romanMap[s[i]];
+
+    return intValue;
+}
+void Problem21()
+{
+    cout << "Problem 21" << endl;
+    string inputWord;
+    cin >> inputWord;
+    cout << convertWord(inputWord) << endl;
+}
+
+            
